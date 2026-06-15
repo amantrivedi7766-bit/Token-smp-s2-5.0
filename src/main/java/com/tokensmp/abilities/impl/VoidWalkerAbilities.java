@@ -70,7 +70,7 @@ public class VoidWalkerAbilities {
                                 target.setVelocity(pull);
                                 if (radius == 10) {
                                     target.damage(15, player);
-                                    target.getWorld().spawnParticle(Particle.EXPLOSION_LARGE, target.getLocation(), 1, 0, 0, 0, 0);
+                                    target.getWorld().spawnParticle(Particle.EXPLOSION, target.getLocation(), 1, 0, 0, 0, 0);
                                 }
                             }
                         });
