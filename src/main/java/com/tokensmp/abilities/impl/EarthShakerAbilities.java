@@ -24,7 +24,7 @@ public class EarthShakerAbilities {
                         double rad = Math.toRadians(angle);
                         double x = Math.cos(rad) * r;
                         double z = Math.sin(rad) * r;
-                        w.spawnParticle(Particle.BLOCK_CRACK, loc.clone().add(x, 0.5, z), 3, 0, 0, 0, 0.1, Material.STONE.createBlockData());
+                        w.spawnParticle(Particle.BLOCK, loc.clone().add(x, 0.5, z), 3, 0, 0, 0, 0.1, Material.STONE.createBlockData());
                     }
                 }
                 player.getNearbyEntities(5, 2, 5).forEach(e -> {
@@ -45,7 +45,7 @@ public class EarthShakerAbilities {
                 player.addPotionEffect(new org.bukkit.potion.PotionEffect(org.bukkit.potion.PotionEffectType.RESISTANCE, 200, 3));
                 player.addPotionEffect(new org.bukkit.potion.PotionEffect(org.bukkit.potion.PotionEffectType.SLOWNESS, 200, 1));
                 player.getWorld().playSound(player.getLocation(), Sound.BLOCK_STONE_PLACE, 1f, 0.5f);
-                player.getWorld().spawnParticle(Particle.BLOCK_CRACK, player.getLocation(), 50, 0.5, 1, 0.5, 0.2, Material.STONE.createBlockData());
+                player.getWorld().spawnParticle(Particle.BLOCK, player.getLocation(), 50, 0.5, 1, 0.5, 0.2, Material.STONE.createBlockData());
                 player.sendMessage("§7Stone Skin activated! You are very tough but slow.");
             });
     }
@@ -60,7 +60,7 @@ public class EarthShakerAbilities {
                 Vector dir = start.getDirection().normalize();
                 for (int step = 0; step < 15; step++) {
                     Location point = start.clone().add(dir.clone().multiply(step));
-                    w.spawnParticle(Particle.BLOCK_CRACK, point, 20, 0.3, 0.5, 0.3, 0.1, Material.STONE.createBlockData());
+                    w.spawnParticle(Particle.BLOCK, point, 20, 0.3, 0.5, 0.3, 0.1, Material.STONE.createBlockData());
                     w.playSound(point, Sound.ENTITY_GENERIC_EXPLODE, 0.8f, 0.6f);
                     point.getNearbyEntities(2, 2, 2).forEach(e -> {
                         if (e instanceof Player target && target != player) {
