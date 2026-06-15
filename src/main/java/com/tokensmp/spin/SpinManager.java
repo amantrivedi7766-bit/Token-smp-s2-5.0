@@ -1,0 +1,3 @@
+package com.tokensmp.spin;
+import com.tokensmp.TokenSMPPlugin; import com.tokensmp.token.*; import org.bukkit.entity.Player;
+public class SpinManager { private final TokenSMPPlugin plugin; private final TokenManager tokenManager; private final SpinAnimation animation=new SpinAnimation(); public SpinManager(TokenSMPPlugin plugin, TokenManager tokenManager){this.plugin=plugin;this.tokenManager=tokenManager;} public TokenType spin(Player player){TokenType result=tokenManager.rollToken(); tokenManager.setToken(player,result); animation.play(player,result); return result;} public TokenSMPPlugin getPlugin(){return plugin;} }
