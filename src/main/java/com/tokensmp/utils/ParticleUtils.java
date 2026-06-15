@@ -11,7 +11,7 @@ public class ParticleUtils {
             double x = (Math.random() - 0.5) * 2;
             double z = (Math.random() - 0.5) * 2;
             w.spawnParticle(Particle.FIREWORK, loc.clone().add(x, 1, z), 0, 0, 0, 0, 1);
-            w.spawnParticle(Particle.VILLAGER_HAPPY, loc.clone().add(x, 0.5, z), 0, 0, 0, 0, 1);
+            w.spawnParticle(Particle.HAPPY_VILLAGER, loc.clone().add(x, 0.5, z), 0, 0, 0, 0, 1);
         }
     }
 
