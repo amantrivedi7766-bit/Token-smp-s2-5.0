@@ -1,3 +1,9 @@
-prefix: '&6[TokenSMP]&r '
-no-permission: '&cYou do not have permission.'
-player-only: '&cOnly players can use this command.'
+prefix: "&8[&6TokenSMP&8] &r"
+spin-won: "&aYou won the &6%token% &atoken!"
+life-lost: "&cYou lost a life! Remaining: &e%lives%"
+banned-no-lives: "&cYou have been permanently banned due to 5 deaths."
+revive-success: "&aYou have been revived!"
+cooldown-active: "&cAbility on cooldown! &e%seconds% seconds remaining."
+no-permission: "&cYou don't have permission to use this."
+token-give: "&aYou gave &6%token% &ato &e%player%"
+token-remove: "&cYou removed &6%token% &cfrom &e%player%"
