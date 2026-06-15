@@ -7,6 +7,7 @@ import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -60,8 +61,7 @@ public class CooldownManager {
             bossBar.setProgress(1.0);
             activeBossBars.computeIfAbsent(uuid, k -> new HashMap<>()).put(type.name() + "_" + index, bossBar);
 
-            Bukkit.getScheduler().runTaskTimer(TokenSMPPlugin.getInstance(), new Runnable() {
-                int elapsed = 0;
+            new BukkitRunnable() {
                 @Override
                 public void run() {
                     if (!player.isOnline() || !isOnCooldown(uuid, type, index)) {
@@ -71,7 +71,6 @@ public class CooldownManager {
                         this.cancel();
                         return;
                     }
-                    elapsed++;
                     long remaining = getRemainingCooldown(uuid, type, index);
                     double progress = remaining / (double) totalSeconds;
                     bossBar.setProgress(Math.max(0, progress));
@@ -81,10 +80,9 @@ public class CooldownManager {
                         this.cancel();
                     }
                 }
-            }, 0L, 20L);
+            }.runTaskTimer(TokenSMPPlugin.getInstance(), 0L, 20L);
         } else {
-            // ACTIONBAR indicator
-            Bukkit.getScheduler().runTaskTimer(TokenSMPPlugin.getInstance(), new Runnable() {
+            new BukkitRunnable() {
                 @Override
                 public void run() {
                     if (!player.isOnline() || !isOnCooldown(uuid, type, index)) {
@@ -94,7 +92,7 @@ public class CooldownManager {
                     long remaining = getRemainingCooldown(uuid, type, index);
                     player.sendActionBar("§c⏳ " + abilityName + " §7cooldown: §e" + remaining + "s");
                 }
-            }, 0L, 20L);
+            }.runTaskTimer(TokenSMPPlugin.getInstance(), 0L, 20L);
         }
     }
 
