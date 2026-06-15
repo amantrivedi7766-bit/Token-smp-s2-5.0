@@ -6,7 +6,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import com.tokensmp.TokenSMPPlugin;
 
 public class AdminGUI {
     public void openMainMenu(Player admin) {
@@ -14,7 +13,7 @@ public class AdminGUI {
         inv.setItem(10, createItem(Material.PLAYER_HEAD, "§aManage Tokens", "§7Give/Remove tokens"));
         inv.setItem(12, createItem(Material.REDSTONE, "§cBounty System", "§7Place or remove bounty"));
         inv.setItem(14, createItem(Material.CLOCK, "§eSpin Control", "§7Force spin for player"));
-        inv.setItem(16, createItem(Material.HEART, "§dLife Manager", "§7Revive or edit lives"));
+        inv.setItem(16, createItem(Material.HEART_OF_THE_SEA, "§dLife Manager", "§7Revive or edit lives"));
         inv.setItem(28, createItem(Material.BOOK, "§bAll Players' Tokens", "§7View every player's tokens"));
         inv.setItem(30, createItem(Material.BARRIER, "§4Disable Tokens", "§7Enable/disable specific tokens"));
         inv.setItem(32, createItem(Material.FIREWORK_ROCKET, "§6Cooldown Override", "§7Reset cooldowns"));
