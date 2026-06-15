@@ -2,8 +2,6 @@ package com.tokensmp.spin;
 
 import com.tokensmp.TokenSMPPlugin;
 import com.tokensmp.token.TokenType;
-import com.tokensmp.utils.ParticleUtils;
-import com.tokensmp.utils.SoundUtils;
 import net.kyori.adventure.title.Title;
 import org.bukkit.entity.Player;
 import java.time.Duration;
@@ -29,9 +27,14 @@ public class SpinManager {
                 net.kyori.adventure.text.Component.text("§a" + won.getDisplayName()),
                 Title.Times.times(Duration.ofMillis(500), Duration.ofMillis(2000), Duration.ofMillis(500))
             ));
-            SoundUtils.playWinSound(player);
-            ParticleUtils.winEffect(player.getLocation());
-            player.getInventory().addItem(TokenSMPPlugin.getInstance().getTokenManager().getTokenItem(won));
+            player.playSound(player.getLocation(), org.bukkit.Sound.UI_TOAST_CHALLENGE_COMPLETE, 1f, 1f);
+            // Win effect particles
+            for (int i = 0; i < 50; i++) {
+                double x = (Math.random() - 0.5) * 2;
+                double z = (Math.random() - 0.5) * 2;
+                player.getWorld().spawnParticle(org.bukkit.Particle.FIREWORK, player.getLocation().clone().add(x, 1, z), 0, 0, 0, 0, 1);
+            }
+            TokenSMPPlugin.getInstance().getTokenManager().giveTokenToPlayer(player, won);
             player.sendMessage("§aYou received the " + won.getDisplayName() + " token!");
         });
     }
