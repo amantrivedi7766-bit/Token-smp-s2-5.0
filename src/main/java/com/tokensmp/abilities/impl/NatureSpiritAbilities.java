@@ -6,6 +6,7 @@ import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.scheduler.BukkitRunnable;
 import java.util.List;
 
 public class NatureSpiritAbilities {
@@ -23,7 +24,7 @@ public class NatureSpiritAbilities {
                 player.getNearbyEntities(5, 3, 5).forEach(e -> {
                     if (e instanceof Player target && target != player) {
                         target.addPotionEffect(new org.bukkit.potion.PotionEffect(org.bukkit.potion.PotionEffectType.SLOWNESS, 80, 3));
-                        target.getWorld().spawnParticle(Particle.VILLAGER_HAPPY, target.getLocation(), 30, 0.4, 0.4, 0.4, 0.05);
+                        target.getWorld().spawnParticle(Particle.HAPPY_VILLAGER, target.getLocation(), 30, 0.4, 0.4, 0.4, 0.05);
                         target.damage(2);
                     }
                 });
@@ -47,7 +48,7 @@ public class NatureSpiritAbilities {
                     double x = (Math.random() - 0.5) * 7;
                     double z = (Math.random() - 0.5) * 7;
                     w.spawnParticle(Particle.HEART, center.clone().add(x, 1, z), 1, 0, 0.2, 0, 0);
-                    w.spawnParticle(Particle.VILLAGER_HAPPY, center.clone().add(x, 0.5, z), 1, 0, 0, 0, 0);
+                    w.spawnParticle(Particle.HAPPY_VILLAGER, center.clone().add(x, 0.5, z), 1, 0, 0, 0, 0);
                 }
                 for (Player p : w.getPlayers()) {
                     if (p.getLocation().distance(center) < 7) {
@@ -70,13 +71,13 @@ public class NatureSpiritAbilities {
                     double rad = Math.toRadians(i);
                     double x = Math.cos(rad) * 4;
                     double z = Math.sin(rad) * 4;
-                    w.spawnParticle(Particle.VILLAGER_HAPPY, loc.clone().add(x, 0, z), 1, 0, 0.5, 0, 0);
+                    w.spawnParticle(Particle.HAPPY_VILLAGER, loc.clone().add(x, 0, z), 1, 0, 0.5, 0, 0);
                 }
                 LivingEntity golem = (LivingEntity) w.spawnEntity(loc, EntityType.IRON_GOLEM);
                 golem.setCustomName("§2Forest Guardian");
                 golem.setCustomNameVisible(true);
                 golem.setInvulnerable(true);
-                Bukkit.getScheduler().runTaskTimer(TokenSMPPlugin.getInstance(), new Runnable() {
+                new BukkitRunnable() {
                     int ticks = 0;
                     @Override
                     public void run() {
@@ -94,7 +95,7 @@ public class NatureSpiritAbilities {
                                 ((Player) target).damage(4);
                             });
                     }
-                }, 0L, 20L);
+                }.runTaskTimer(TokenSMPPlugin.getInstance(), 0L, 20L);
             });
     }
 }
