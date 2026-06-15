@@ -29,7 +29,7 @@ public class ShadowDancerAbilities {
                     player.teleport(behind);
                     player.getWorld().playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1f, 1.2f);
                     for (int i = 0; i < 30; i++) {
-                        player.getWorld().spawnParticle(Particle.SPELL_WITCH, behind, 1, 0.2, 0.2, 0.2, 0);
+                        player.getWorld().spawnParticle(Particle.WITCH, behind, 1, 0.2, 0.2, 0.2, 0);
                     }
                 } else {
                     player.sendMessage("§cNo enemy nearby to shadow step to!");
@@ -45,7 +45,7 @@ public class ShadowDancerAbilities {
                 player.addPotionEffect(new org.bukkit.potion.PotionEffect(org.bukkit.potion.PotionEffectType.INVISIBILITY, 100, 1));
                 player.addPotionEffect(new org.bukkit.potion.PotionEffect(org.bukkit.potion.PotionEffectType.SPEED, 100, 2));
                 player.getWorld().playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1f, 0.5f);
-                player.getWorld().spawnParticle(Particle.SMOKE_LARGE, player.getLocation(), 40, 0.5, 1, 0.5, 0.05);
+                player.getWorld().spawnParticle(Particle.LARGE_SMOKE, player.getLocation(), 40, 0.5, 1, 0.5, 0.05);
                 player.sendMessage("§8You fade into the shadows...");
             });
     }
