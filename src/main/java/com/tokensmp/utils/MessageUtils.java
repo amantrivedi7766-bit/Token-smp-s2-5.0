@@ -1,3 +1,18 @@
 package com.tokensmp.utils;
-import org.bukkit.ChatColor; import org.bukkit.command.CommandSender;
-public final class MessageUtils { private MessageUtils(){} public static String color(String message){return ChatColor.translateAlternateColorCodes('&', message);} public static void send(CommandSender sender, String message){sender.sendMessage(color(message));} }
+
+import com.tokensmp.TokenSMPPlugin;
+import org.bukkit.ChatColor;
+
+public class MessageUtils {
+    public static String color(String msg) {
+        return ChatColor.translateAlternateColorCodes('&', msg);
+    }
+
+    public static String getPrefix() {
+        return color(TokenSMPPlugin.getInstance().getConfig().getString("messages.prefix", "&8[&6TokenSMP&8] &r"));
+    }
+
+    public static void send(org.bukkit.entity.Player player, String msg) {
+        player.sendMessage(getPrefix() + color(msg));
+    }
+}
