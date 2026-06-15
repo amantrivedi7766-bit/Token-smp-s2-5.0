@@ -48,7 +48,7 @@ public class FrostWalkerAbilities {
                     for (int x = -1; x <= 1; x++) {
                         for (int z = -1; z <= 1; z++) {
                             if (Math.abs(x) == 1 && Math.abs(z) == 1) continue;
-                            w.spawnParticle(Particle.BLOCK_CRACK, loc.clone().add(x, y, z), 3, 0, 0, 0, 0.1, Material.BLUE_ICE.createBlockData());
+                            w.spawnParticle(Particle.BLOCK, loc.clone().add(x, y, z), 3, 0, 0, 0, 0.1, Material.BLUE_ICE.createBlockData());
                         }
                     }
                 }
