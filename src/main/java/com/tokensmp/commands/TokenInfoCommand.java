@@ -1,3 +1,19 @@
 package com.tokensmp.commands;
-import com.tokensmp.token.TokenType; import org.bukkit.command.*;
-public class TokenInfoCommand implements CommandExecutor { @Override public boolean onCommand(CommandSender sender, Command command, String label, String[] args){sender.sendMessage("Available tokens: "+java.util.Arrays.toString(TokenType.values())); return true;} }
+
+import com.tokensmp.gui.TokenInfoGUI;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+public class TokenInfoCommand implements CommandExecutor {
+    @Override
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (!(sender instanceof Player p)) {
+            sender.sendMessage("§cOnly players can use this.");
+            return true;
+        }
+        new TokenInfoGUI().open(p);
+        return true;
+    }
+}
