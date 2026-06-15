@@ -1,0 +1,3 @@
+package com.tokensmp.token;
+import com.tokensmp.data.DataManager; import java.util.*; import org.bukkit.entity.Player;
+public class TokenManager { private final DataManager dataManager; private final Random random = new Random(); public TokenManager(DataManager dataManager){this.dataManager=dataManager;} public TokenType getToken(Player player){return dataManager.getPlayerData(player.getUniqueId()).getTokenType();} public void setToken(Player player, TokenType type){dataManager.getPlayerData(player.getUniqueId()).setTokenType(type);} public TokenType rollToken(){TokenType[] values=TokenType.values(); return values[random.nextInt(values.length)];} public List<TokenType> allTokens(){return Arrays.asList(TokenType.values());} }

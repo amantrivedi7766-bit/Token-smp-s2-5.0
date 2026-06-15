@@ -1,0 +1,3 @@
+package com.tokensmp.life;
+import com.tokensmp.TokenSMPPlugin; import com.tokensmp.data.DataManager; import org.bukkit.entity.Player;
+public class LifeManager { private final TokenSMPPlugin plugin; private final DataManager dataManager; public LifeManager(TokenSMPPlugin plugin, DataManager dataManager){this.plugin=plugin;this.dataManager=dataManager;} public void removeLife(Player player){dataManager.getPlayerData(player.getUniqueId()).removeLife();} public void addLife(Player player){dataManager.getPlayerData(player.getUniqueId()).addLife();} public int getLives(Player player){return dataManager.getPlayerData(player.getUniqueId()).getLives();} public TokenSMPPlugin getPlugin(){return plugin;} }

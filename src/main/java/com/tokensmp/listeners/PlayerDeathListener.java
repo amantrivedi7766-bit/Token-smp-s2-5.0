@@ -1,0 +1,3 @@
+package com.tokensmp.listeners;
+import com.tokensmp.data.BountyManager; import com.tokensmp.life.LifeManager; import org.bukkit.event.*; import org.bukkit.event.entity.PlayerDeathEvent;
+public class PlayerDeathListener implements Listener { private final LifeManager lifeManager; private final BountyManager bountyManager; public PlayerDeathListener(LifeManager lifeManager,BountyManager bountyManager){this.lifeManager=lifeManager;this.bountyManager=bountyManager;} @EventHandler public void onDeath(PlayerDeathEvent event){lifeManager.removeLife(event.getEntity()); bountyManager.setBounty(event.getEntity().getUniqueId(), 0);} }
