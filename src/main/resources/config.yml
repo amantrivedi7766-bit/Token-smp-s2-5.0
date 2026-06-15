@@ -1,2 +1,5 @@
-starting-lives: 3
-spin-cost: 1
+spin-on-join: true
+max-lives: 5
+revive-item-enabled: true
+cooldown-indicator: BOSSBAR
+bounty-base-price: 100
