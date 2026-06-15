@@ -29,9 +29,7 @@ public class ItemUseListener implements Listener {
         }
         if (found == null) return;
         event.setCancelled(true);
-        // Open ability selection GUI (simplified: just use first ability for demo)
-        // In a full implementation, you'd open a sub-GUI to choose ability 1,2,3.
-        // For simplicity, we'll use ability 1.
+        // For simplicity, use ability 1 (index 0)
         var abilities = TokenSMPPlugin.getInstance().getAbilityManager().getToken(found).getAbilities();
         if (!abilities.isEmpty()) {
             TokenSMPPlugin.getInstance().getAbilityManager().useAbility(p, found, 0);
