@@ -28,7 +28,7 @@ public final class TokenSMPPlugin extends JavaPlugin {
         saveResource("messages.yml", false);
 
         dataManager = new DataManager();
-        tokenManager = new TokenManager();
+        tokenManager = new TokenManager(dataManager);
         spinManager = new SpinManager();
         lifeManager = new LifeManager();
         abilityManager = new AbilityManager();
