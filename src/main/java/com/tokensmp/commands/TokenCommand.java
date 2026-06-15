@@ -1,3 +1,20 @@
 package com.tokensmp.commands;
-import com.tokensmp.token.*; import org.bukkit.command.*; import org.bukkit.entity.Player;
-public class TokenCommand implements CommandExecutor { private final TokenManager tokenManager; public TokenCommand(TokenManager tokenManager){this.tokenManager=tokenManager;} @Override public boolean onCommand(CommandSender sender, Command command, String label, String[] args){ if(!(sender instanceof Player player)){sender.sendMessage("Only players can use this command."); return true;} TokenType token=tokenManager.getToken(player); sender.sendMessage("Your token: "+(token==null?"None":token.name())); return true; } }
+
+import com.tokensmp.TokenSMPPlugin;
+import com.tokensmp.gui.PlayerTokensGUI;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+public class TokenCommand implements CommandExecutor {
+    @Override
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (!(sender instanceof Player p)) {
+            sender.sendMessage("§cOnly players can use this command.");
+            return true;
+        }
+        new PlayerTokensGUI().open(p);
+        return true;
+    }
+}
