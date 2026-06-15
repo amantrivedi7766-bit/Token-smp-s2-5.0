@@ -19,6 +19,7 @@ public class AbilityManager {
     }
 
     private void registerTokens() {
+        // Normal tokens
         tokenMap.put(TokenType.BLAZING_PHOENIX, new Token(TokenType.BLAZING_PHOENIX, BlazingPhoenixAbilities.getAll()));
         tokenMap.put(TokenType.FROST_WALKER, new Token(TokenType.FROST_WALKER, FrostWalkerAbilities.getAll()));
         tokenMap.put(TokenType.THUNDER_STRIKE, new Token(TokenType.THUNDER_STRIKE, ThunderStrikeAbilities.getAll()));
@@ -26,12 +27,12 @@ public class AbilityManager {
         tokenMap.put(TokenType.SHADOW_DANCER, new Token(TokenType.SHADOW_DANCER, ShadowDancerAbilities.getAll()));
         tokenMap.put(TokenType.NATURE_SPIRIT, new Token(TokenType.NATURE_SPIRIT, NatureSpiritAbilities.getAll()));
         tokenMap.put(TokenType.VOID_WALKER, new Token(TokenType.VOID_WALKER, VoidWalkerAbilities.getAll()));
+
         // Admin tokens
         tokenMap.put(TokenType.GODLIKE, new Token(TokenType.GODLIKE, AdminAbilitiesPlaceholder.getGodlikeAbilities()));
         tokenMap.put(TokenType.OMNI, new Token(TokenType.OMNI, AdminAbilitiesPlaceholder.getOmniAbilities()));
         tokenMap.put(TokenType.CREATIVE, new Token(TokenType.CREATIVE, AdminAbilitiesPlaceholder.getCreativeAbilities()));
 
-        // Also register in TokenManager for item creation
         for (var entry : tokenMap.entrySet()) {
             TokenSMPPlugin.getInstance().getTokenManager().registerToken(entry.getKey(), entry.getValue());
         }
